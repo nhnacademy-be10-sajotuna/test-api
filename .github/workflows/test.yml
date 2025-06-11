@@ -19,15 +19,15 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean package -DskipTests
 
-      - name: Upload JAR to NHN Cloud
+      - name: Upload order JAR
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_IP }}
           username: ${{ secrets.SSH_ID }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "target/*.jar"
-          target: "~/"
+          source: "target/order-*.jar"
+          target: "~/target/order"
           rm: false
 
       - name: Run deployment script
