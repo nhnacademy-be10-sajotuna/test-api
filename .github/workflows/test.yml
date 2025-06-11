@@ -26,8 +26,9 @@ jobs:
           username: ${{ secrets.SSH_ID }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "target/order-*.jar"
+          source: "./target/order-*.jar"
           target: "~/target/order"
+          strip_components: 1
           rm: false
 
       - name: Run deployment script
